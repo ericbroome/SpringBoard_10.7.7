@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Object Enhancement - SpringBoard 10.5.6</title>
+    <title>Maps and Sets - SpringBoard 10.7.7</title>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -32,6 +32,14 @@
     <h4>What does the following code return?</h4>
     <pre>
       <code class="javascript mini-code">
+        new Set([1,1,2,2,3,4])
+        //(4) [1, 2, 3, 4]
+        
+        //Made a function for this:
+        const question_1 = function() {
+          const set = new Set([1, 1, 2, 2, 3, 4]);
+          return Array.from(set);
+        }
       </code>
     </pre>
   </div>
@@ -40,6 +48,15 @@
     <h4>What does the following code return?</h4>
     <pre>
       <code class="javascript mini-code">
+        [...new Set("referee")].join("")
+        //"ref"
+
+        //Made a function for thescript
+        const question_2 = function() {
+          const result = [...new Set("referee")].join("");
+          return result;
+          //"ref"
+      }
       </code>
     </pre>
   </div>
@@ -48,66 +65,97 @@
     <h4>What does the map <b><bi>m</bi></b>? look like</h4>
     <pre>
       <code class="javascript mini-code">
+        let m = new Map();
+        m.set([1,2,3], true);
+        m.set([1,2,3], false);
+        //Map(2) {(3) [1, 2, 3] => true, (3) [1, 2, 3] => false}
+
+        //Made a function for this
+        const question_3 = function() {
+          let m = new Map();
+          m.set([1,2,3], true);
+          m.set([1,2,3], false);
+          return m;
+          //Map(2) {(3) [1, 2, 3] => true, (3) [1, 2, 3] => false}
+        }
       </code>
     </pre>
   </div>
   <div class="question">
     <h2>hasDuplicate</h2>
-    <h4>What does the following code return/print?</h4>
+    <h4>Write a function called hasDuplicate which accepts an array and returns true or false if that array contains a duplicate</h4>
     <pre>
       <code class="javascript mini-code">
+        const hasDuplicate = function(arr) {
+          const set = new Set(arr);
+          return set.size !== arr.length;
       </code>
     </pre>
   </div>
   <div class="question">
     <h2>vowelCount</h2>
-    <h4>What does the following code return/print?</h4>
+    <h4>Write a function called vowelCount which accepts a string and returns a map where the keys are numbers and the values are the count of the vowels in the string.</h4>
     <pre>
       <code class="javascript mini-code">
+        const vowelCount = function(str) {
+          const vowels = new Map([
+              ['a', 0],
+              ['e', 0],
+              ['i', 0],
+              ['o', 0],
+              ['u', 0]
+          ]);
+          const lowStr = str.toLowerCase();
+          for(element of Array.from(lowStr)) {
+              let vowel = vowels.get(element);
+              if(vowel != undefined) {
+                  vowels.set(element, ++vowel);
+              }
+          };
+          //Now remove unused vowels
+          vowels.forEach((value, key) => {
+              if(value === 0)vowels.delete(key);
+          });
+          return vowels;
+        }
       </code>
     </pre>
   </div>
-  <h2>thescript.js</h2>
-  <pre>
-    <code id="theCode" class="javascript">
-    </code>
-  </pre>
-    <hr />
-    <h2>thescript.test.js</h2>
-    <div class="code-block">
-      <pre>
-        <code id="theTest" class="javascript">
-          describe("", () => {
-            it("", () => {
+  <h2>thescript.test.js</h2>
+  <div class="code-block">
+    <pre>
+      <code id="theTest" class="javascript">
+        describe("", () => {
+          it("", () => {
 //              expect().toEqual();
-            })
-          });
-          
-          describe("", () => {
-            it("", () => {
+          })
+        });
+        
+        describe("", () => {
+          it("", () => {
 //              expect().toEqual();
-            })
-          });
-          
-          describe("", () => {
-            it("", () => {
+          })
+        });
+        
+        describe("", () => {
+          it("", () => {
 //              expect().toEqual();
-            })
-          });
-          
-          describe("", () => {
-            it("", () => {
+          })
+        });
+        
+        describe("", () => {
+          it("", () => {
 //              expect().toEqual();
-            })
-          });
-          
-          describe("", () => {
-            it("", () => {
+          })
+        });
+        
+        describe("", () => {
+          it("", () => {
 //              expect().toEqual();
-            })
-          });
-        </code>
-      </pre>
+          })
+        });
+      </code>
+    </pre>
     </div>
     <hr />
     <h2>Jasmine Testing</h2>
